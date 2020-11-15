@@ -85,11 +85,11 @@ class Program:
     WIDTH, HEIGHT = 1280, 720
 
     def __init__(self):
+        self.box1 = Box(Program.WIDTH / 4, Const.COLOR_1, 1, 0, 100)
+        self.box2 = Box(Program.WIDTH, Const.COLOR_2, float(input('Mass of box2 : ')), -5, 300)
+
         self.window = pygame.display.set_mode((Program.WIDTH, Program.HEIGHT))
         self.running = False
-
-        self.box1 = Box(Program.WIDTH / 4, Const.COLOR_1, 1, 0, 100)
-        self.box2 = Box(Program.WIDTH, Const.COLOR_2, 100 ** 1, -5, 300)
 
         self.total_collision = 0
 
@@ -101,7 +101,7 @@ class Program:
                 self.running = False
 
     def tick(self):
-        for i in range(int(self.box2.mass)):
+        while True:
             break_ = True
             if self.box2.get_left_x() <= self.box1.get_right_x():
                 self.box1.collide(self.box2)
